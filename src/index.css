@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500 selection:text-white min-h-screen font-sans;
+  }
+}
+
+/* RTL layout & multilingual typography */
+[dir="rtl"], .rtl-layout {
+  direction: rtl;
+  text-align: right;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Arabic", "Noto Nastaliq Urdu", Arial, sans-serif;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Thermal printer print media optimization */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-area, #printable-area * {
+    visibility: visible;
+  }
+  #printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Specific 80mm thermal receipt constraints */
+  .receipt-80mm {
+    width: 79mm !important;
+    max-width: 79mm !important;
+    padding: 2mm !important;
+    padding-bottom: 28mm !important; /* Extra bottom clearance so printer paper cutter never slices text */
+    margin-bottom: 15mm !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Specific 58mm thermal receipt constraints */
+  .receipt-58mm {
+    width: 56mm !important;
+    max-width: 56mm !important;
+    padding: 1mm !important;
+    padding-bottom: 28mm !important; /* Extra bottom clearance so printer paper cutter never slices text */
+    margin-bottom: 15mm !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Standard A4 print constraints */
+  .invoice-a4 {
+    width: 210mm !important;
+    max-width: 210mm !important;
+    padding: 12mm !important;
+    padding-bottom: 20mm !important;
+    font-size: 12px !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Empty feed lines spacer for thermal printer paper cut clearance */
+  .invoice-feed-lines {
+    display: block !important;
+    width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 4mm;
+  }
+}

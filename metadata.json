@@ -1,0 +1,6 @@
+{
+  "name": "Mobile Shop POS & Management System",
+  "description": "Comprehensive Mobile Shop POS, Inventory, IMEI Tracking & Installment Management System with 3-tier pricing, thermal receipt printing, and WhatsApp messaging.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
